@@ -13,6 +13,17 @@
     </head>
 
     <body>
+        <textarea name="jsoninput" id="jsoninput" cols="80" rows="20"></textarea>
+        <textarea name="jsonoutput" id="jsonoutput" cols="80" rows="20"></textarea>
+        <br>
+        <input type="submit" value="pretty json" id="button" name="button" onclick="json(jsoninput.value)" />
+
+        <script>
+            var json = function(input) {
+                jsonoutput.value = formatJSON(input)
+            } 
+        </script>
+
     </body>
 
 </html>
