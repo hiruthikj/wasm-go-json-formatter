@@ -20,7 +20,12 @@
 
         <script>
             var json = function(input) {
-                jsonoutput.value = formatJSON(input)
+                var [result, err] = formatJSON(input)
+                console.log("Value from go: ", result)
+                if (err != null) {
+                    jsonoutput.value = ""
+                    alert("error: " + err)
+                }
             } 
         </script>
 
