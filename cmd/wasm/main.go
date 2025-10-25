@@ -9,8 +9,9 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello wasm!!!!1")
-	js.Global().Set("formatJson", jsonWrapper())
+	fmt.Println("Hello wasm!1")
+	js.Global().Set("formatJSON", jsonWrapper())
+	<-make(chan struct{})
 }
 
 func prettyJson(input string) (string, error) {
@@ -35,7 +36,8 @@ func jsonWrapper() js.Func {
 		fmt.Printf("input: %v\n", input)
 		pretty, err := prettyJson(input)
 		if err != nil {
-			return fmt.Sprintf("Unable to prettify json %v", err)
+			fmt.Printf("unable to convert to json %s\n", err)
+			return err.Error()
 		}
 		return pretty
 	})
